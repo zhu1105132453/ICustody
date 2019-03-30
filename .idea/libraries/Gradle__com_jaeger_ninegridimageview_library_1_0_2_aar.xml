@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.jaeger.ninegridimageview:library:1.0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.2.aar/046b5dddfbfd6a416e498c8fecc14fc3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.2.aar/046b5dddfbfd6a416e498c8fecc14fc3/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jaeger.ninegridimageview/library/1.0.2/8cd06c1267f5e4ebf601b1609103c9b41dae35b/library-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
