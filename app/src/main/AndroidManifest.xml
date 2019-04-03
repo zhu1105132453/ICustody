@@ -29,19 +29,21 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="6FsvpGmT5Fe05FssVTsslxqEySXYqXox"/>
         <activity
-            android:name=".Activity.LoginActivity">
+            android:name=".Activity.LoginActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.RegisterActivity"  android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Activity.MainActivity" android:windowSoftInputMode="stateHidden">
         </activity>
-        <activity android:name=".Activity.ImageViewActivity" />
-        <activity android:name=".Activity.LBSActivity" />
-        <activity android:name=".Activity.ThumbActivity" />
+        <activity android:name=".Activity.ImageViewActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Activity.LBSActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Activity.ThumbActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Activity.TalkActivity" android:windowSoftInputMode="stateHidden"/>
 
         <service android:name="com.baidu.location.f"
             android:enabled="true"

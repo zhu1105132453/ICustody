@@ -33,6 +33,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.example.zjj20181218.icustody.Activity.ActivityCollector;
 import com.example.zjj20181218.icustody.Activity.LoginActivity;
 import com.example.zjj20181218.icustody.Activity.ThumbActivity;
 import com.example.zjj20181218.icustody.MyApplication;
@@ -182,6 +183,7 @@ public class SettingFragment extends Fragment {
                     public void onItemClick(Object o, int position) {
                         if (position == 0) {
                             Intent intent = new Intent(getActivity(), LoginActivity.class);
+                            ActivityCollector.finishAll();
                             startActivity(intent);
                         }
                     }

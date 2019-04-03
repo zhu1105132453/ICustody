@@ -126,7 +126,16 @@ public class HttpUtil {
         return client.newCall(request).execute();
     }
 
+    public static Response get(String url) throws IOException {
+        OkHttpClient client = new OkHttpClient();
 
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        return client.newCall(request).execute();
+    }
+
+    //上传头像
     public static Call uploadImage(String url, List<String> imagePath, Activity activity) throws IOException, JSONException {
         File sdcache = activity.getExternalCacheDir();
         int cacheSize = 10 * 1024 * 1024;
@@ -141,6 +150,43 @@ public class HttpUtil {
 
         MultipartBody.Builder mbody = new MultipartBody.Builder().setType(MultipartBody.FORM).addFormDataPart("userid", MyApplication.user.getId())
                 .addFormDataPart("count", String.valueOf(imagePath.size()));
+
+        List<File> fileList = new ArrayList<>();
+        for (int i = 0; i < imagePath.size(); i++) {
+            fileList.add(new File(imagePath.get(i)));
+        }
+        int i = 0;
+        for (File file : fileList) {
+            if (file.exists()) {
+                Log.i("imageName:", file.getName());//经过测试，此处的名称不能相同，如果相同，只能保存最后一个图片，不知道那些同名的大神是怎么成功保存图片的。
+                mbody.addFormDataPart("image" + i, file.getName(), RequestBody.create(MediaType.parse("image/jpeg"), file));
+                i++;
+            }
+        }
+        RequestBody requestBody = mbody.build();
+        Request request = new Request.Builder()
+                .header("Authorization", "Client-ID " + "...")
+                .url(url)
+                .post(requestBody)
+                .build();
+        return mOkHttpClient.newCall(request);
+    }
+
+    //上传说说
+    public static Call uploadImages(String url, List<String> imagePath,String content, Activity activity) throws IOException, JSONException {
+        File sdcache = activity.getExternalCacheDir();
+        int cacheSize = 10 * 1024 * 1024;
+        //设置超时时间及缓存
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .cache(new Cache(sdcache.getAbsoluteFile(), cacheSize));
+
+        OkHttpClient mOkHttpClient = builder.build();
+
+        MultipartBody.Builder mbody = new MultipartBody.Builder().setType(MultipartBody.FORM).addFormDataPart("userid", MyApplication.user.getId())
+                .addFormDataPart("count", String.valueOf(imagePath.size())).addFormDataPart("content", content);
 
         List<File> fileList = new ArrayList<>();
         for (int i = 0; i < imagePath.size(); i++) {

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.zjj20181218.icustody"
-        minSdkVersion 19
+        minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -36,4 +36,6 @@ dependencies {
     implementation 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
     implementation 'com.jaeger.ninegridimageview:library:1.1.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.j256.ormlite:ormlite-android:4.48'
+    implementation 'com.j256.ormlite:ormlite-core:4.48'
 }

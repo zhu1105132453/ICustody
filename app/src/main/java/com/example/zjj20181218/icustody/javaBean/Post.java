@@ -9,21 +9,32 @@ import java.util.List;
  * GitHub: https://github.com/laobie
  */
 public class Post {
+    private int id;
     private String mContent;
+    private String mTime;
     private int mSpanType;
     private List<String> mImgUrlList;
 
     public Post() {
     }
 
-    public Post(String content, List<String> imgUrlList) {
+    public Post(String content, List<String> imgUrlList, String time) {
         mContent = content;
         mImgUrlList = imgUrlList;
+        mTime = time;
     }
     public Post(String content,int spanType, List<String> imgUrlList) {
         mContent = content;
         mSpanType = spanType;
         mImgUrlList = imgUrlList;
+    }
+
+    public String getTime() {
+        return mTime;
+    }
+
+    public void setTime(String time) {
+        this.mTime = time;
     }
 
     public String getContent() {

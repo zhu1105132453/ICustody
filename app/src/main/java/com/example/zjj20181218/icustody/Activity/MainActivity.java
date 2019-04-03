@@ -252,7 +252,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             @Override
             public void onClick(View view) {
                 rightLowerMenu.close(true);
-
+                Intent intent = new Intent(MainActivity.this, TalkActivity.class);
+                intent.putExtra("title", "photo");
+                startActivity(intent);
             }
         });
 
@@ -260,7 +262,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
             @Override
             public void onClick(View view) {
                 rightLowerMenu.close(true);
-
+                Intent intent = new Intent(MainActivity.this, TalkActivity.class);
+                intent.putExtra("title", "talk");
+                startActivity(intent);
             }
         });
     }

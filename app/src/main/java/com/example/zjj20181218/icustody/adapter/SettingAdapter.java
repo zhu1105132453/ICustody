@@ -117,32 +117,37 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.ViewHold
                                     if (name.isEmpty()) {
                                         Toast.makeText(mContext, "啥都没填呢,修改失败", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        data = new String[]{MyApplication.user.getId(), name, "", "", ""};
+                                        if (!MyApplication.user.getName().equals(name)) {
+                                            data = new String[]{MyApplication.user.getId(), name, "", "", ""};
 
-                                        new Thread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                try {
-                                                    HttpUtil.post("http://120.79.229.78/zjj/android/database/setting.php", filed, data).enqueue(new Callback() {
-                                                        @Override
-                                                        public void onFailure(Call call, IOException e) {
-                                                            Message message = new Message();
-                                                            message.what = NAME_F;
-                                                            handler.sendMessage(message);
-                                                        }
-                                                        @Override
-                                                        public void onResponse(Call call, Response response) throws IOException {
-                                                            Message message = new Message();
-                                                            message.what = NAME_S;
-                                                            message.obj = name;
-                                                            handler.sendMessage(message);
-                                                        }
-                                                    });
-                                                } catch (IOException e) {
-                                                    e.printStackTrace();
+                                            new Thread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    try {
+                                                        HttpUtil.post("http://120.79.229.78/zjj/android/database/setting.php", filed, data).enqueue(new Callback() {
+                                                            @Override
+                                                            public void onFailure(Call call, IOException e) {
+                                                                Message message = new Message();
+                                                                message.what = NAME_F;
+                                                                handler.sendMessage(message);
+                                                            }
+
+                                                            @Override
+                                                            public void onResponse(Call call, Response response) throws IOException {
+                                                                Message message = new Message();
+                                                                message.what = NAME_S;
+                                                                message.obj = name;
+                                                                handler.sendMessage(message);
+                                                            }
+                                                        });
+                                                    } catch (IOException e) {
+                                                        e.printStackTrace();
+                                                    }
                                                 }
-                                            }
-                                        }).start();
+                                            }).start();
+                                        } else {
+                                            Toast.makeText(mContext, "无效修改！", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                     return;
                                 }
@@ -195,35 +200,39 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.ViewHold
                                     if (birth.isEmpty()) {
                                         Toast.makeText(mContext, "啥都没填呢,修改失败", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        data = new String[]{MyApplication.user.getId(), "", "", birth, ""};
-                                        new Thread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                try {
-                                                    HttpUtil.post("http://120.79.229.78/zjj/android/database/setting.php", filed, data).enqueue(new Callback() {
-                                                        @Override
-                                                        public void onFailure(Call call, IOException e) {
-                                                            Message message = new Message();
-                                                            message.what = BIRTH_F;
-                                                            handler.sendMessage(message);
-                                                        }
-                                                        @Override
-                                                        public void onResponse(Call call, Response response) throws IOException {
-                                                            Message message = new Message();
-                                                            message.what = BIRTH_S;
-                                                            message.obj = birth;
-                                                            handler.sendMessage(message);
-                                                        }
-                                                    });
-                                                } catch (IOException e) {
-                                                    e.printStackTrace();
+                                        if (!MyApplication.user.getBirth().equals(birth)) {
+                                            data = new String[]{MyApplication.user.getId(), "", "", birth, ""};
+                                            new Thread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    try {
+                                                        HttpUtil.post("http://120.79.229.78/zjj/android/database/setting.php", filed, data).enqueue(new Callback() {
+                                                            @Override
+                                                            public void onFailure(Call call, IOException e) {
+                                                                Message message = new Message();
+                                                                message.what = BIRTH_F;
+                                                                handler.sendMessage(message);
+                                                            }
+
+                                                            @Override
+                                                            public void onResponse(Call call, Response response) throws IOException {
+                                                                Message message = new Message();
+                                                                message.what = BIRTH_S;
+                                                                message.obj = birth;
+                                                                handler.sendMessage(message);
+                                                            }
+                                                        });
+                                                    } catch (IOException e) {
+                                                        e.printStackTrace();
+                                                    }
                                                 }
-                                            }
-                                        }).start();
+                                            }).start();
+                                        } else {
+                                            Toast.makeText(mContext, "无效修改！", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                     return;
                                 }
-                                Toast.makeText(mContext, "点击了第" + position + "个", Toast.LENGTH_SHORT).show();
                             }
                         });
                         parentViewGroup = (ViewGroup) extView.getParent();
@@ -246,35 +255,39 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.ViewHold
                                     if (email.isEmpty()) {
                                         Toast.makeText(mContext, "啥都没填呢,修改失败", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        data = new String[]{MyApplication.user.getId(), "", "", "", email};
-                                        new Thread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                try {
-                                                    HttpUtil.post("http://120.79.229.78/zjj/android/database/setting.php", filed, data).enqueue(new Callback() {
-                                                        @Override
-                                                        public void onFailure(Call call, IOException e) {
-                                                            Message message = new Message();
-                                                            message.what = EMAIL_F;
-                                                            handler.sendMessage(message);
-                                                        }
-                                                        @Override
-                                                        public void onResponse(Call call, Response response) throws IOException {
-                                                            Message message = new Message();
-                                                            message.what = EMAIL_S;
-                                                            message.obj = email;
-                                                            handler.sendMessage(message);
-                                                        }
-                                                    });
-                                                } catch (IOException e) {
-                                                    e.printStackTrace();
+                                        if (!MyApplication.user.getEmail().equals(email)) {
+                                            data = new String[]{MyApplication.user.getId(), "", "", "", email};
+                                            new Thread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    try {
+                                                        HttpUtil.post("http://120.79.229.78/zjj/android/database/setting.php", filed, data).enqueue(new Callback() {
+                                                            @Override
+                                                            public void onFailure(Call call, IOException e) {
+                                                                Message message = new Message();
+                                                                message.what = EMAIL_F;
+                                                                handler.sendMessage(message);
+                                                            }
+
+                                                            @Override
+                                                            public void onResponse(Call call, Response response) throws IOException {
+                                                                Message message = new Message();
+                                                                message.what = EMAIL_S;
+                                                                message.obj = email;
+                                                                handler.sendMessage(message);
+                                                            }
+                                                        });
+                                                    } catch (IOException e) {
+                                                        e.printStackTrace();
+                                                    }
                                                 }
-                                            }
-                                        }).start();
+                                            }).start();
+                                        } else {
+                                            Toast.makeText(mContext, "无效修改！", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                     return;
                                 }
-                                Toast.makeText(mContext, "点击了第" + position + "个", Toast.LENGTH_SHORT).show();
                             }
                         });
                         parentViewGroup = (ViewGroup) extView.getParent();

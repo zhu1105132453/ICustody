@@ -36,16 +36,13 @@ public class InfoImageAdapter extends RecyclerView.Adapter<InfoImageAdapter.View
     private List<InfoImage> mImageList;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        CardView cardView;
         LinearLayout linearLayout;
         ImageView imageView;
         TextView textView;
         TextView textView2;
-        public View view;
         
         public ViewHolder(View view) {
             super(view);
-            cardView = (CardView) view;
             linearLayout = (LinearLayout) view.findViewById(R.id.line);
             imageView = (ImageView) view.findViewById(R.id.image_info);
             textView = (TextView) view.findViewById(R.id.name_info);
