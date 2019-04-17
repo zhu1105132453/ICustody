@@ -27,7 +27,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data 
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="6FsvpGmT5Fe05FssVTsslxqEySXYqXox"/>
+            android:value="Yk6hDMdhnVR21aAs772HTvgNCdIPk6h0"/>
         <activity
             android:name=".Activity.LoginActivity"
             android:windowSoftInputMode="stateHidden">

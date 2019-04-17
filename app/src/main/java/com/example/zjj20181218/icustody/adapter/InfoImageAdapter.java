@@ -80,7 +80,7 @@ public class InfoImageAdapter extends RecyclerView.Adapter<InfoImageAdapter.View
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ImageViewActivity.class);
-                intent.putExtra("image", url + infoImage.getImg());
+                intent.putExtra("image", url + infoImage.getImg().replace("\\", "/"));
                 mContext.startActivity(intent);
             }
         });

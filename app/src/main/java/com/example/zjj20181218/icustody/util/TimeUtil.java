@@ -38,7 +38,7 @@ public class TimeUtil {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         }
-        long lt = new Long(s + "000");
+        long lt = new Long(s);
         Date date = new Date(lt);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             res = simpleDateFormat.format(date);

@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
                 try {
                     Response response = HttpUtil.post("http://120.79.229.78/zjj/android/database/info.php", "userid", MyApplication.user.getId());
                     if (response != null) {
-                        String result = response.body().string().replace("\\","/");
+                        String result = response.body().string();
                         Gson gson = new Gson();
                         imageList = gson.fromJson(result, new TypeToken<List<InfoImage>>(){}.getType());
 
